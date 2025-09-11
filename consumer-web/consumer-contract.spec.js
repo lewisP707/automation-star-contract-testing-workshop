@@ -36,4 +36,34 @@ describe('Movies Service', () => {
       });
     });
   });
+
+  const MOVIE_BODY = { id: 1, name: "My movie", year: "1999" };
+
+  describe('When a GET request is made to a specific movie ID', () => {
+    test('it should return a specific movie', async () => {
+      const testId = 100;
+      MOVIE_BODY.id = testId;
+
+      provider
+        .given('Has a movie with specific ID', { id: testId })
+        .uponReceiving('a request to a specific movie')
+        .withRequest({
+          method: 'GET',
+          path: `/movie/${testId}`,
+        })
+        .willRespondWith({
+          status: 200,
+          body: {
+            id: integer(testId),
+            name: string(MOVIE_BODY.name),
+            year: string(MOVIE_BODY.year),
+          }
+        });
+
+      await provider.executeTest(async mockProvider => {
+        const movies = await fetchSingleMovie(mockProvider.url, testId);
+        expect(movies).toEqual(MOVIE_BODY);
+      });
+    });
+  });
 });

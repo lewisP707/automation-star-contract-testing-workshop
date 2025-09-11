@@ -11,7 +11,7 @@ const options = {
   providerBaseUrl: `http://localhost:${port}`,
   pactBrokerToken: process.env.PACT_BROKER_TOKEN,
   providerVersion: '0.0.1',
-  providerVersionBranch: 'main',
+  providerVersionBranch: 'mot-exercise',
   publishVerificationResult: true,
   stateHandlers: {
     'Has a movie with specific ID': (parameters) => {

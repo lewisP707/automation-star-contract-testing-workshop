@@ -52,15 +52,32 @@
       },
       "response": {
         "body": {
+          "date": "1999-01-01",
           "id": 100,
-          "name": "My movie",
-          "year": "1999"
+          "name": "My movie"
+        },
+        "generators": {
+          "body": {
+            "$.date": {
+              "format": "yyyy-MM-dd",
+              "type": "Date"
+            }
+          }
         },
         "headers": {
           "Content-Type": "application/json"
         },
         "matchingRules": {
           "body": {
+            "$.date": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "format": "yyyy-MM-dd",
+                  "match": "date"
+                }
+              ]
+            },
             "$.id": {
               "combine": "AND",
               "matchers": [
@@ -70,14 +87,6 @@
               ]
             },
             "$.name": {
-              "combine": "AND",
-              "matchers": [
-                {
-                  "match": "type"
-                }
-              ]
-            },
-            "$.year": {
               "combine": "AND",
               "matchers": [
                 {

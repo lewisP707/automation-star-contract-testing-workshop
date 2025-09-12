@@ -6,6 +6,7 @@ const {
   eachLike,
   integer,
   string,
+  date
 } = MatchersV3;
 
 const provider = new PactV3({
@@ -37,7 +38,7 @@ describe('Movies Service', () => {
     });
   });
 
-  const MOVIE_BODY = { id: 1, name: "My movie", year: "1999" };
+  const MOVIE_BODY = { id: 1, name: "My movie", date: "1999-01-01" };
 
   describe('When a GET request is made to a specific movie ID', () => {
     test('it should return a specific movie', async () => {
@@ -56,13 +57,14 @@ describe('Movies Service', () => {
           body: {
             id: integer(testId),
             name: string(MOVIE_BODY.name),
-            year: string(MOVIE_BODY.year),
+            date: date('yyyy-MM-dd', '1999-01-01'),
           }
         });
 
       await provider.executeTest(async mockProvider => {
-        const movies = await fetchSingleMovie(mockProvider.url, testId);
-        expect(movies).toEqual(MOVIE_BODY);
+        const movie = await fetchSingleMovie(mockProvider.url, testId);
+        expect(movie.id).toEqual(MOVIE_BODY.id);
+        expect(movie.name).toEqual(MOVIE_BODY.name);
       });
     });
   });

@@ -87,11 +87,39 @@ server.get('/movies', (req, res) => {
  *                id: 1
  *                name: James Bond
  *                year: 2021
+ *      '400':
+ *        description: Movie ID invalid
+ *        content:
+ *          application/json; charset=utf-8:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                error:
+ *                  type: string
+ *              example: 
+ *                error: Movie ID invalid
+ *      '404':
+ *        description: Movie not found
+ *        content:
+ *          text/plain:
+ *            schema:
+ *              type: string
+ *              example: Movie not found
+ *      '500':
+ *        description: Unexpected server error
+ *        content:
+ *          text/plain:
+ *            schema:
+ *              type: string
+ *              example: Internal server error
  */
 server.get('/movie/:id', (req, res) => {
+  if (req.params.id < 1 || isNaN(req.params.id)) {
+    res.status(400).send({ error: 'Movie ID invalid' });
+  }
   const movie = movies.getMovieById(req.params.id);
   if (!movie) {
-    res.status(404).send({ error: 'Movie not found' });
+    res.status(404).send('Movie not found');
   } else {
     res.send(movie);
   }

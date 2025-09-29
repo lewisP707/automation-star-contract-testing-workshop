@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start:web": "cross-env node consumer-web/web/app.js",
     "test:web:consumer": "jest consumer-web/consumer-contract.spec.js",
     "can:i:deploy:consumer": "pact-broker can-i-deploy --pacticipant WebConsumer --version=$GITHUB_SHA --to-environment production",
     "record:web:consumer:deployment": "pact-broker record-deployment --pacticipant WebConsumer --version $GITHUB_SHA --environment production",

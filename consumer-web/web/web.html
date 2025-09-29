@@ -1,0 +1,35 @@
+<head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.1.1/css/pico.min.css"
+    >
+</head>
+<body>
+    <header class="container">
+      <hgroup>
+        <h2>Movies</h2>
+      </hgroup>
+    </header>
+    <main class="container">
+        <article id="article">
+            <h4>Film: </h4>
+            <p id="film">Fetch a file to change this text.</p>
+            <h4>Year: </h4>
+            <p id="year">Fetch a file to change this text.</p>
+        </article>
+    </main>
+    <script>
+        getText('movies.json');
+        async function getText(file) {
+            await fetch(file).then(async function(response) {
+                const movies = await response.json();
+                return movies[0];
+            }).then(function(json) {
+                document.getElementById("film").innerHTML = json.name;
+                document.getElementById("year").innerHTML = json.year;
+            }).catch(function(ex) {
+            console.log('Parsing failed:', ex);
+            });
+        }
+    </script>
+</body>

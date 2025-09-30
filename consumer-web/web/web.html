@@ -19,11 +19,11 @@
         </article>
     </main>
     <script>
-        getText('movies.json');
+        getText('movie/100');
         async function getText(file) {
             await fetch(file).then(async function(response) {
-                const movies = await response.json();
-                return movies[0];
+                const movie = await response.json();
+                return movie;
             }).then(function(json) {
                 document.getElementById("film").innerHTML = json.name;
                 let dateString = json.date.split('-');

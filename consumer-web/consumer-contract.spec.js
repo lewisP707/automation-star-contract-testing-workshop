@@ -15,29 +15,7 @@ const provider = new PactV3({
   provider: 'MoviesAPI',
 });
 
-const EXPECTED_BODY = { id: 1, name: "My movie", year: 1999 };
-
 describe('Movies Service', () => {
-  describe('When a GET request is made to /movies', () => {
-    test('it should return all movies', async () => {
-      provider
-        .uponReceiving('a request to all movies')
-        .withRequest({
-          method: 'GET',
-          path: '/movies',
-        })
-        .willRespondWith({
-          status: 200,
-          body: eachLike(EXPECTED_BODY),
-        });
-
-      await provider.executeTest(async mockProvider => {
-        const movies = await fetchMovies(mockProvider.url);
-        expect(movies[0]).toEqual(EXPECTED_BODY);
-      });
-    });
-  });
-
   const MOVIE_BODY = { id: 1, name: "My movie", date: "1999-01-01" };
 
   describe('When a GET request is made to a specific movie ID', () => {

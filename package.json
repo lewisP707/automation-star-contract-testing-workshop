@@ -6,13 +6,13 @@
   "scripts": {
     "start:web": "cross-env node consumer-web/web/app.js",
     "test:web:consumer": "jest consumer-web/consumer-contract.spec.js",
-    "can:i:deploy:consumer": "pact-broker can-i-deploy --pacticipant WebConsumer --version=$GITHUB_SHA --to-environment production",
+    "can:i:deploy:consumer": "pact-broker can-i-deploy --pacticipant WebConsumer --version=0.0.6 --to-environment production",
     "record:web:consumer:deployment": "pact-broker record-deployment --pacticipant WebConsumer --version $GITHUB_SHA --environment production",
-    "publish:pact": "pact-broker publish ./pacts --consumer-app-version=0.0.3 --branch=mot-exercise --broker-base-url=$PACT_BROKER_URL --broker-token=$PACT_API_TOKEN",
+    "publish:pact": "pact-broker publish ./pacts --consumer-app-version=0.0.6 --branch=mot-exercise",
     "start:provider": "cross-env PORT=3001 node provider/provider-service.js",
     "test:provider": "jest provider/provider-contract.spec.js --testTimeout=20000 --forceExit",
     "can:i:deploy:provider": "pact-broker can-i-deploy --pacticipant MoviesAPI --version=$GITHUB_SHA --to-environment production",
-    "record:provider:deployment": "pact-broker record-deployment --pacticipant MoviesAPI --version $GITHUB_SHA --environment production"
+    "record:provider:deployment": "pact-broker record-deployment --pacticipant MoviesAPI --version 0.0.6 --environment production"
   },
   "author": "",
   "license": "ISC",

@@ -1,6 +1,6 @@
-const { server, importData } = require('./provider');
+const { server, importDatabase } = require('./provider');
 const port = process.env.PORT || 3000;
 
-importData();
+importDatabase();
 
 server.listen(port, () => console.log(`Listening on port ${port}...`));

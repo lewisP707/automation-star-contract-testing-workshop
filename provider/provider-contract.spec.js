@@ -1,10 +1,10 @@
 const { Verifier } = require('@pact-foundation/pact');
-const { importData, movies, server } = require('./provider')
+const { importDatabase, movies, server } = require('./provider')
 
 const port = '3001';
 const app = server.listen(port, () => console.log(`Listening on port ${port}...`));
 
-importData();
+importDatabase();
 
 const options = {
   provider: 'MoviesAPI',

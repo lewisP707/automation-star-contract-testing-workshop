@@ -1,4 +1,8 @@
 class Movie {
+  id;
+  name;
+  date;
+
   constructor() {
     this.movies = [];
   }
@@ -16,7 +20,13 @@ class Movie {
   }
 
   insertMovie(movie) {
-    this.movies.push(movie);
+    let insert = new Movie();
+    insert = {
+      id: movie.id,
+      name: movie.name,
+      date: movie.date
+    };
+    this.movies.push(insert);
   }
 
   getFirstMovie() {

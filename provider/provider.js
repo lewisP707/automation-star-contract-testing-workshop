@@ -17,8 +17,8 @@ server.use(express.json());
 const movies = new Movies();
 
 // Load default data into the Movies class
-const importData = () => {
-  const data = require('.././data/movies.json');
+const importDatabase = () => {
+  const data = require('../database/movies.json');
   data.reduce((a, v) => {
     v.id = a + 1;
     movies.insertMovie(v);
@@ -190,6 +190,6 @@ server.get('/swagger.json', (req, res) => {
 
 module.exports = {
   server,
-  importData,
+  importDatabase,
   movies,
 };

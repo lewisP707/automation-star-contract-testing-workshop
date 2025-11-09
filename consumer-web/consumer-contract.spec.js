@@ -35,7 +35,7 @@ describe('Movies Service', () => {
           body: {
             id: integer(testId),
             name: string(MOVIE_BODY.name),
-            date: date('yyyy-MM-dd', '1999-01-01'),
+            date: integer(1999),
           }
         });
 

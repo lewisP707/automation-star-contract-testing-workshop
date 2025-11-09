@@ -52,17 +52,9 @@
       },
       "response": {
         "body": {
-          "date": "1999-01-01",
+          "date": 1999,
           "id": 100,
           "name": "My movie"
-        },
-        "generators": {
-          "body": {
-            "$.date": {
-              "format": "yyyy-MM-dd",
-              "type": "Date"
-            }
-          }
         },
         "headers": {
           "Content-Type": "application/json"
@@ -73,8 +65,7 @@
               "combine": "AND",
               "matchers": [
                 {
-                  "format": "yyyy-MM-dd",
-                  "match": "date"
+                  "match": "integer"
                 }
               ]
             },

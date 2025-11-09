@@ -1,7 +1,7 @@
 [
-  { "id": 1, "name": "The Shawshank Redemption", "date": 1994 },
-  { "id": 2, "name": "The Dark Knight", "date": 2008 },
-  { "id": 3, "name": "Amelie", "date": 2001 },
-  { "id": 4, "name": "Fight Club", "date": 1994 },
-  { "id": 5, "name": "The Lion King", "date": 1994 }
+  { "id": 1, "name": "The Shawshank Redemption", "date": "1994-01-01" },
+  { "id": 2, "name": "The Dark Knight", "date": "2008-01-01" },
+  { "id": 3, "name": "Amelie", "date": "2001-01-01" },
+  { "id": 4, "name": "Fight Club", "date": "1994-01-01" },
+  { "id": 5, "name": "The Lion King", "date": "1994-01-01" }
 ]

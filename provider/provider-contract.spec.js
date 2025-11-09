@@ -10,8 +10,8 @@ const options = {
   provider: 'MoviesAPI',
   providerBaseUrl: `http://localhost:${port}`,
   pactBrokerToken: process.env.PACT_BROKER_TOKEN,
-  providerVersion: '0.0.6',
-  providerVersionBranch: 'mot-exercise',
+  providerVersion: '0.1.1',
+  providerVersionBranch: 'automation-star-exercise',
   publishVerificationResult: false,
   stateHandlers: {
     'Has a movie with specific ID': (parameters) => {
@@ -32,7 +32,7 @@ if (process.env.PACT_PAYLOAD_URL) {
   console.log(`Using Pact Broker Base URL: ${process.env.PACT_BROKER_BASE_URL}`)
   options.pactBrokerUrl = process.env.PACT_BROKER_BASE_URL,
     options.consumerVersionSelectors = [
-      { branch: 'mot-exercise' }
+      { branch: 'automation-star-exercise' }
     ]
 };
 

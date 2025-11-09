@@ -12,9 +12,9 @@
       "response": {
         "body": [
           {
+            "date": 1999,
             "id": 1,
-            "name": "My movie",
-            "year": 1999
+            "name": "My movie"
           }
         ],
         "headers": {

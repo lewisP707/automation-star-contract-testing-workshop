@@ -6,6 +6,7 @@ const {
   eachLike,
   integer,
   string,
+  like
 } = MatchersV3;
 
 const provider = new PactV3({
@@ -14,7 +15,7 @@ const provider = new PactV3({
   provider: 'MoviesAPI',
 });
 
-const EXPECTED_BODY = { id: 1, name: "My movie", date: 1999 };
+const EXPECTED_BODY = [{ id: 1, name: "My movie", date: 1999 }];
 
 describe('Movies Service', () => {
   describe('When a GET request is made to /movies', () => {
@@ -27,12 +28,12 @@ describe('Movies Service', () => {
         })
         .willRespondWith({
           status: 200,
-          body: eachLike(EXPECTED_BODY),
+          body: like(EXPECTED_BODY),
         });
 
       await provider.executeTest(async mockProvider => {
         const movies = await fetchMovies(mockProvider.url);
-        expect(movies[0]).toEqual(EXPECTED_BODY);
+        expect(movies[0]).toEqual(EXPECTED_BODY[0]);
       });
     });
   });

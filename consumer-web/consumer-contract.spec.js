@@ -37,4 +37,31 @@ describe('Movies Service', () => {
       });
     });
   });
+
+  describe('When a GET request is made to a specific movie ID', () => {
+    test('it should return get movie by id', async () => {
+      const testId = 100;
+
+      provider
+        .given('Has a movie with specific ID', { id: testId })
+        .uponReceiving('a request to get a specific movie')
+        .withRequest({
+          method: 'GET',
+          path: `/movie/${testId}`,
+        })
+        .willRespondWith({
+          status: 200,
+          body: {
+            id: integer(testId),
+            name: string("Frozen"),
+            date: integer(2013),
+          }
+        });
+
+      await provider.executeTest(async mockProvider => {
+        const movie = await fetchSingleMovie(mockProvider.url, testId);
+        expect(movie.id).toEqual(testId);
+      });
+    });
+  });
 });
